@@ -1,6 +1,10 @@
 // import Link from 'next/link';
 // import { getProducts } from '../../lib/products'
 
+import ProductList from "@/components/product-list/product-list";
+import { getProducts } from '@/lib/products'
+import Link from "next/link";
+
 // interface Product {
 //     id: number;
 //     description: string;
@@ -25,10 +29,21 @@
 
 // export default ProductPage
 
-export default function EstimationPage() {
+export default function ProductPage() {
+
+    const products = getProducts()
+
+    console.log('product', products)
+
     return (
         <>
-            <h1>Product Page</h1>
+            <header>
+                <h1>Product Page</h1>
+                <p><Link href='/product/new-product'>New Product</Link></p>
+            </header>
+            <main>
+                <ProductList products={products} />
+            </main>
         </>
     )
 }

@@ -1,5 +1,5 @@
-// import { getProduct } from "@/lib/products"
-// import { notFound } from "next/navigation"
+import { getProduct } from "@/lib/products"
+import { notFound } from "next/navigation"
 
 // interface ProductDetailParams {
 //     productDetail: string;
@@ -27,10 +27,16 @@
 
 // export default ProductDetailPage
 
-export default function ProductDetailPage() {
+export default function ProductDetailPage({params}) {
+
+    const productId = params.productDetail
+    const product = getProduct(productId)
+
     return (
         <>
             <h1>Product Detail Page</h1>
+            <h2>{product.description}</h2>
+            <h2>{product.price}</h2>
         </>
     )
 }

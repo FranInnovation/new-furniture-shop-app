@@ -31,8 +31,6 @@ export default function ClientPage() {
 
     const clients = getClients();
 
-    console.log('clents: ', clients)
-
     return (
         <>
             <header>
