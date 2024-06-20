@@ -1,95 +1,121 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+
+// 'use client'
+
+import { ChangeEvent, FormEvent, useState, FocusEvent } from "react";
+
+// import WellcomePage from "./wellcome/page";
+import { useContext } from "react";
+
+import classes from "./page.module.css";
+import Link from "next/link";
 
 export default function Home() {
+
+  // const [user, setUser] = useState(null)
+
+  // const userCtx = useContext(UserContext);
+
+  // const [token, setToken] = useState(localStorage.getItem('token') || '')
+
+  // const [credentials, setCredentials] = useState({
+  //   email: '',
+  //   password: ''
+  // })
+
+  // const [errors, setErrors] = useState({
+  //   email: '',
+  //   password: ''
+  // });
+
+  // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+  // const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setCredentials({
+  //     ... credentials,
+  //     [event.target.name]: event.target.value
+  //   })
+  // }
+
+  // const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+  //   const { name, value } = event.target;
+
+  //   if (name === "email" && !emailRegex.test(value)) {
+  //     setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is not valid' }));
+  //   } else if (name === "password" && !passwordRegex.test(value)) {
+  //     setErrors((prevErrors) => ({ ...prevErrors, password: 'Password must be at least 6 characters long and contain both letters and numbers' }));
+  //   } else {
+  //     setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
+  //   }
+  // };
+
+  // const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+
+  //   const res = await fetch('/api/users', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(credentials)
+  //   });
+  //   const data = await res.json();
+
+  //   if(res.ok) {
+  //     // const newUser: User = {
+  //     //   email: data.user.email,
+  //     //   name: data.user.name,
+  //     //   lastname: data.user.lastname
+  //     // }
+  //     // console.log('newUser: ', newUser.name)
+  //     // userCtx.setUser(newUser)
+  //     // console.log('userCTX: ', userCtx.user.name)
+
+  //     setToken(data.token);
+  //     localStorage.setItem('token', data.token)
+  //     console.log('Localstorage: ', localStorage.getItem('token'))
+  //   } else {
+  //     console.error('login Error: ', data.message)
+  //   }
+  // }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <main className={classes.main}>
+        <div className={classes.login_animation_container}>
+          <div className="backgroud-animation">
+            <p>Animation</p>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <div className={classes.login_form_container}>
+          <div className="login-form">
+            <h1>Login</h1>
+            <form /*onSubmit={handleSubmit}*/>
+              <div className="form-group">
+                  <label htmlFor="email">User:</label>
+                  <input type="email" id="email" name="email" required
+                  // onChange={handleChange}
+                  // onBlur={handleBlur}
+                  />
+                  {/* {errors.email && <p className="error">{errors.email}</p>} */}
+              </div>
+              <div className="form-group">
+                  <label htmlFor="password">Password:</label>
+                  <input type="password" id="password" name="password" required
+                  // onChange={handleChange}
+                  // onBlur={handleBlur}
+                  />
+                  {/* {errors.password && <p className="error">{errors.password}</p>} */}
+              </div>
+              <div className="form-group">
+                  <button type="submit">ENTRAR</button>
+              </div>
+            </form>
+            <p><Link href='/wellcome'>Wellcome Page</Link></p>
+          </div>
+        </div>
+      </main>
+    </>
   );
 }
