@@ -1,5 +1,6 @@
-// import { getClients } from '../../lib/clients'
-// import Link from "next/link";
+import { getClients } from '../../lib/clients'
+import ClientsList from "@/components/clients-list/clients-list";
+import Link from "next/link";
 
 // interface Client {
 //     id: number;
@@ -27,9 +28,22 @@
 // export default ClientPage
 
 export default function ClientPage() {
+
+    const clients = getClients();
+
+    console.log('clents: ', clients)
+
     return (
         <>
-            <h1>Clients Page</h1>
+            <header>
+                <h1>Clients Page</h1>
+
+                <p><Link href='/client/new-client'>New Client</Link></p>
+            </header>
+            <main>
+                <ClientsList clients={clients}/>
+            </main>
+            
         </>
     )
 }
