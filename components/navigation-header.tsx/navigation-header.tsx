@@ -14,7 +14,7 @@ const NavigationHeader: React.FC = () => {
                     <ul>
                         <Link href='/client'>Clients</Link>
                         <Link href='/product'>Products</Link>
-                        <Link href='/estimation'>Estimations</Link>
+                        <Link href='/estimate'>Estimates</Link>
                         <Link href='/user'>User</Link>
                         <button>Log out</button>
                     </ul>
