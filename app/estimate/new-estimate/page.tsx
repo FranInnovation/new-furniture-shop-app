@@ -1,5 +1,5 @@
 
-import ClientSelector from "@/components/clients-list/client-selector"
+
 import EstimateBuilder from "@/components/estimate-builder/estimate-builder"
 import { newEstimate } from "@/lib/actions"
 import { getClients } from "@/lib/clients"
@@ -20,8 +20,7 @@ export default function AddNewEstimate() {
             <form action={newEstimate}>
                 <div>
 
-                    <ClientSelector clients={clients}/>
-                    <EstimateBuilder products={products} />
+                    <EstimateBuilder products={products} clients={clients}/>
 
                     <button type="submit">Submit Estimate</button>
                 </div>

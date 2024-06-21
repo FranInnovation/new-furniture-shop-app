@@ -3,11 +3,20 @@
 
 import { useEffect, useState } from "react";
 import ProductSelector from "../product-list/product-selector";
+import ClientSelector from "../clients-list/client-selector";
 
-export default function EstimateBuilder({ products }) {
+export default function EstimateBuilder({ products, clients }) {
 
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [estimatePrice, setEstimatePrice] = useState(0);
+
+    const [selectedClient, setSelectedClient] = useState<string>("");
+    
+    const handleClientChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedClient(event.target.value);
+    };
+
+
 
     useEffect(() => {
         setEstimatePrice(selectedProducts.reduce((acc, product) => acc + (product.price * product.quantity), 0));
@@ -44,14 +53,9 @@ export default function EstimateBuilder({ products }) {
         });
     };
 
-    useEffect(() => {
-
-        console.log('Selectted Products: ', selectedProducts)
-
-    }, [selectedProducts])
-
     return (
         <>
+            <ClientSelector clients={clients} selectedClient={selectedClient} onClientChange={handleClientChange}/>
             <ProductSelector products={products} onProductSelect={handleProductSelect} />
             <div>
                 <h2>Estimate Products</h2>

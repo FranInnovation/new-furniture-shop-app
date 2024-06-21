@@ -1,20 +1,10 @@
-'use client'
 
-import { useState } from "react";
-
-
-export default function ClientSelector({clients}) {
-    
-    const [selectedClient, setSelectedClient] = useState<string>("");
-    
-    const handleClientChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedClient(event.target.value);
-    };
+export default function ClientSelector({clients, selectedClient, onClientChange}) {
 
     return (
         <p>
         <label htmlFor="client">Client</label>
-        <select id="client" name="client" value={selectedClient} onChange={handleClientChange} required>
+        <select id="client" name="client" value={selectedClient} onChange={onClientChange} required>
             {clients.map(client => (
                 <option key={client.id} value={client.id}>
                     {client.name}
