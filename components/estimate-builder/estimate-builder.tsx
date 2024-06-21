@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import ProductSelector from "../product-list/product-selector";
 import ClientSelector from "../clients-list/client-selector";
 
+import { newEstimate } from '@/lib/actions'
+
 export default function EstimateBuilder({ products, clients }) {
 
     const [selectedProducts, setSelectedProducts] = useState([]);
@@ -53,6 +55,11 @@ export default function EstimateBuilder({ products, clients }) {
         });
     };
 
+    const handleSubmit = (selectedClient, selectedProducts) => {
+
+        newEstimate(selectedClient, selectedProducts)
+    }
+
     return (
         <>
             <ClientSelector clients={clients} selectedClient={selectedClient} onClientChange={handleClientChange}/>
@@ -70,6 +77,8 @@ export default function EstimateBuilder({ products, clients }) {
                     <p>Total: {estimatePrice}</p>
                 </div>
             </div>
+
+            <button type="button" onClick={() => handleSubmit(selectedClient, selectedProducts)}>Submit Estimate</button>
         </>
     );
 }

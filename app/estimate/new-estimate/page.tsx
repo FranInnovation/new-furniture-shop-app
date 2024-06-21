@@ -20,9 +20,8 @@ export default function AddNewEstimate() {
             <form action={newEstimate}>
                 <div>
 
-                    <EstimateBuilder products={products} clients={clients}/>
+                    <EstimateBuilder products={products} clients={clients} />
 
-                    <button type="submit">Submit Estimate</button>
                 </div>
             </form>   
         </main>

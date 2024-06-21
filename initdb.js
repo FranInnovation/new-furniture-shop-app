@@ -98,8 +98,8 @@ db.prepare(`
        id_estimate INTEGER NOT NULL,
        quantity INTEGER NOT NULL,
        PRIMARY KEY (id_product, id_estimate),
-       FOREIGN KEY (id_product) REFERENCES products(id),
-       FOREIGN KEY (id_estimate) REFERENCES estimates(id)
+       FOREIGN KEY (id_product) REFERENCES product(id),
+       FOREIGN KEY (id_estimate) REFERENCES estimate(id)
    )
 `).run();
 
@@ -108,8 +108,8 @@ db.prepare(`
        id_client INTEGER NOT NULL,
        id_estimate INTEGER NOT NULL,
        PRIMARY KEY (id_client, id_estimate),
-       FOREIGN KEY (id_client) REFERENCES clients(id),
-       FOREIGN KEY (id_estimate) REFERENCES estimates(id)
+       FOREIGN KEY (id_client) REFERENCES client(id),
+       FOREIGN KEY (id_estimate) REFERENCES estimate(id)
    )
 `).run();
 
