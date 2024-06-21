@@ -3,12 +3,16 @@
 import EstimateBuilder from "@/components/estimate-builder/estimate-builder"
 import { newEstimate } from "@/lib/actions"
 import { getClients } from "@/lib/clients"
+import { getEstimates } from "@/lib/estimates"
 import { getProducts } from "@/lib/products"
 
 export default function AddNewEstimate() {
 
     const clients = getClients()
     const products = getProducts()
+    const estimates = getEstimates()
+
+    console.log('estimates: ', estimates)
 
 
     return (
