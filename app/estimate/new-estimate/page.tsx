@@ -4,13 +4,11 @@ import EstimateBuilder from "@/components/estimate-builder/estimate-builder"
 import { newEstimate } from "@/lib/actions"
 import { getClients } from "@/lib/clients"
 import { getProducts } from "@/lib/products"
-import { useState } from "react"
 
 export default function AddNewEstimate() {
 
     const clients = getClients()
     const products = getProducts()
-
 
 
     return (
