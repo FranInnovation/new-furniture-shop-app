@@ -1,12 +1,20 @@
 import Link from "next/link";
-import EstimateDetail from '../../components/estimate-detail/estimate-detail'
+import { getEstimates } from "@/lib/estimates";
+import EstimateList from "@/components/estimate-detail/estimate-list";
 
 export default function EstimatePage() {
+    const estimates = getEstimates();
     return (
         <>
+        <header>
             <h1>Estimate Page</h1>
             <p><Link href='/estimate/new-estimate'>New Estimate</Link></p>
-            <EstimateDetail estimateId='8' />
+        </header>
+        <main>
+            <EstimateList estimates={estimates} />
+        </main>
+
+            
         </>
     )
 }

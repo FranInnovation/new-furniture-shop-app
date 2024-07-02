@@ -33,8 +33,6 @@ export default function ProductPage() {
 
     const products = getProducts()
 
-    console.log('product', products)
-
     return (
         <>
             <header>

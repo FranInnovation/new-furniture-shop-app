@@ -12,9 +12,6 @@ export default function AddNewEstimate() {
     const products = getProducts()
     const estimates = getEstimates()
 
-    console.log('estimates: ', estimates)
-
-
     return (
         <>
         <header>
