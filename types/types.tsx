@@ -15,3 +15,16 @@ export interface ClientListItemProps {
 export interface ClientsListProps {
     clients: ClientListItemProps[];
 }
+
+export interface Client {
+    id: number;
+    name: string;
+    lastname: string;
+    document: string;
+    birthdate: string; // o Date si prefieres manejarlo como un objeto Date
+    email: string;
+}
+
+export interface ClientUpdaterProps {
+    client: Client;
+}

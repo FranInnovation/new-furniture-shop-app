@@ -4,6 +4,7 @@
 import ProductList from "@/components/product-list/product-list";
 import { getProducts } from '@/lib/products'
 import Link from "next/link";
+import classes from './page.module.css'
 
 // interface Product {
 //     id: number;
@@ -35,9 +36,9 @@ export default function ProductPage() {
 
     return (
         <>
-            <header>
+            <header className={classes.header}>
                 <h1>Product Page</h1>
-                <p><Link href='/product/new-product'>New Product</Link></p>
+                <button><Link href='/product/new-product'>New Product</Link></button>
             </header>
             <main>
                 <ProductList products={products} />
