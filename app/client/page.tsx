@@ -1,6 +1,7 @@
 import { getClients } from '../../lib/clients'
 import ClientsList from "@/components/clients-list/clients-list";
 import Link from "next/link";
+import classes from './page.module.css'
 
 export default function ClientPage() {
 
@@ -8,12 +9,12 @@ export default function ClientPage() {
 
     return (
         <>
-            <header>
+            <header className={classes.header}>
                 <h1>Clients Page</h1>
 
-                <p><Link href='/client/new-client'>New Client</Link></p>
+                <button><Link href='/client/new-client'>New Client</Link></button>
             </header>
-            <main>
+            <main className={classes.main}>
                 <ClientsList clients={clients}/>
             </main>
             

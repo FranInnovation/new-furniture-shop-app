@@ -22,7 +22,12 @@
 export default function UserPage() {
     return (
         <>
+            <header>
             <h1>User Page</h1>
+            </header>
+            <main>
+                user info
+            </main>
         </>
     )
 }

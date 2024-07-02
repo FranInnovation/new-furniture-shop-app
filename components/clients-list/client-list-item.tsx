@@ -1,17 +1,19 @@
 import Link from "next/link";
+import { ClientListItemProps } from "@/types/types";
+import classes from './client-list-item.module.css'
 
-export default function ClientListItem({ id, name, lastname, email, birthdate }) {
+export default function ClientListItem({ id, name, lastname, email, birthdate }: ClientListItemProps) {
     return (
         <>
-            <div>
+        <div>
+        <Link href={`/client/${id}`} className={classes.link}>
+
+                <p>{id}</p>
                 <p>{name}</p>
                 <p>{lastname}</p>
                 <p>{email}</p>
-                <p>{birthdate}</p>
-                <div>
-                <Link href={`/client/${id}`}>Client Details</Link>
-                </div>
-            </div>
-        </>
+        </Link>
+        </div>
+    </>
     )
 }

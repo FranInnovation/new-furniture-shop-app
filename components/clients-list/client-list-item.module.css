@@ -1,0 +1,22 @@
+.link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    width: 100%;
+    background-color: white;
+}
+
+.link:hover {
+    background-color: #FBA834;
+}
+
+.item {
+    display: flex;
+    width: 100%;
+}
+
+.link p {
+    flex: 1;
+    margin: 0;
+    padding: 0 1rem;
+}
