@@ -1,21 +1,29 @@
 import Link from "next/link";
-
+import NavLink from './nav-link'
+import logoImg from '@/assets/logo_muebles.png'
 import classes from './navigation-header.module.css'
-import { redirect } from "next/navigation";
+import Image from "next/image";
+import MainHeaderBackground from './main-header-background'
 
 const NavigationHeader: React.FC = () => {
 
     return (
         <>
+        <MainHeaderBackground />
             <header className={classes.header}>
-                <Link href='/'>LOGO</Link>
+                <Link href='/' className={classes.logo}>
+                <div className={classes.image_logo_container}>
+                    <Image src={logoImg} alt="furniture-logo" priority/>
+                </div>
+                    
+                </Link>
 
-                <nav>
+                <nav className={classes.nav}>
                     <ul>
-                        <Link href='/client'>Clients</Link>
-                        <Link href='/product'>Products</Link>
-                        <Link href='/estimate'>Estimates</Link>
-                        <Link href='/user'>User</Link>
+                        <li><NavLink href='/client'>Clients</NavLink></li>
+                        <li><NavLink href='/product'>Products</NavLink></li>
+                        <li><NavLink href='/estimate'>Estimates</NavLink></li>
+                        <li><NavLink href='/user'>User</NavLink></li>
                         <button>Log out</button>
                     </ul>
                 </nav>
