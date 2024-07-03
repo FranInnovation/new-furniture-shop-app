@@ -1,19 +1,27 @@
+
+import { Client } from "@/types/types";
 import Link from "next/link";
-import { ClientListItemProps } from "@/types/types";
-import classes from './client-list-item.module.css'
+import classes from './clients-list.module.css';
 
-export default function ClientListItem({ id, name, lastname, email, birthdate }: ClientListItemProps) {
+const ClientListItem: React.FC<Client> = ({ id, name, lastname, email, document }) => {
     return (
-        <>
-        <div>
-        <Link href={`/client/${id}`} className={classes.link}>
+        <tr className={classes.tableRow}>
+            <td className={classes.tableCell}>
+                <Link href={`/client/${id}`} className={classes.link}>{id}</Link>
+            </td>
+            <td className={classes.tableCell}>
+                <Link href={`/client/${id}`} className={classes.link}>{name}</Link>
+            </td>
+            <td className={classes.tableCell}>
+                <Link href={`/client/${id}`} className={classes.link}>{lastname}</Link>
+            </td>
+            <td className={classes.tableCell}>
+                <Link href={`/client/${id}`} className={classes.link}>{email}</Link>
+            </td>
+        </tr>
+    );
+};
 
-                <p>{id}</p>
-                <p>{name}</p>
-                <p>{lastname}</p>
-                <p>{email}</p>
-        </Link>
-        </div>
-    </>
-    )
-}
+export default ClientListItem;
+
+

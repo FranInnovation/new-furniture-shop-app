@@ -18,11 +18,6 @@ export default function EstimateLink({estimateId}) {
 
     return (
         <>
-        {/* <h1>Client name: {client.name} {client.lastname}</h1>
-        <h2>product list</h2>
-        <ul>
-            {products.map(product => <li key={product.id}>{product.description} / {product.price} / {product.quantity}</li>)}
-        </ul> */}
         <div>
             <p>Client: {client.name} {client.lastname} Estimate: {estimateId} Product Count: {totalProducts} Total Amount: {totalAmount}</p>
         </div>

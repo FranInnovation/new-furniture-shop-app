@@ -1,30 +1,31 @@
+
 import ClientListItem from "./client-list-item";
 import { ClientsListProps } from "@/types/types";
-import classes from './clients-list.module.css'
+import classes from './clients-list.module.css';
 
-export default function ClientsList({clients}: ClientsListProps) {
+export default function ClientsList({ clients }: ClientsListProps) {
     return (
         <>
             <header className={classes.header}>
                 <h2>Clients List</h2>
             </header>
-            <div className={classes.main}>
-                <ul className={classes.ul}>
-                    <li className={classes.li}>
-                        <div className={classes.div}>
-                            <p>ID</p>
-                            <p>Name</p>
-                            <p>Lastname</p>
-                            <p>Email</p>
-                        </div>
-                    </li>
-                    {clients.map(client => (
-                        <li key={client.id}>
-                            <ClientListItem {...client} />
-                        </li>
-                    ))}
-                </ul>
+            <div className={classes.tableContainer}>
+                <table className={classes.table}>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {clients.map(client => (
+                            <ClientListItem key={client.id} {...client} />
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </>
-    )
+    );
 }

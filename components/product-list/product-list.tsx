@@ -1,28 +1,4 @@
 
-// import Link from "next/link";
-
-// export default function ProductList({products}) {
-//     return (
-//         <>
-//         <header>
-//             <h2>Products List</h2>
-//         </header>
-//         <div>
-//             <ul>
-//                 <li>
-//                     <div>
-//                         <p>ID</p>
-//                         <p>Description</p>
-//                         <p>Price</p>
-//                     </div>
-//                 </li>
-//                 {products.map(product => <li key={product.id}><Link href={`/product/${product.id}`} key={product.id}>{product.description} {product.price}</Link></li>)}
-//             </ul>
-//         </div>
-//         </>
-//     )
-// }
-
 import Link from "next/link";
 import classes from './product-list.module.css';
 
