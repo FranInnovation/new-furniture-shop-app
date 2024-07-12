@@ -1,26 +1,47 @@
-import { getClient } from '@/lib/clients'
-import { getClientIdByEstimateId, getProductsDetailsByEstimateId } from '@/lib/estimates'
 
-export default function EstimateLink({estimateId}) {
+import { getClient } from '@/lib/clients';
+import { getClientIdByEstimateId, getProductsDetailsByEstimateId } from '@/lib/estimates';
+import { EstimateLinkProps, Product } from '@/types/types';
+import Link from "next/link";
+import classes from './estimate-link.module.css';
 
-    const clientId = getClientIdByEstimateId(estimateId)
-    const client = getClient(clientId.id_client)
-    const products = getProductsDetailsByEstimateId(estimateId)
 
-    let totalAmount = 0
-    let totalProducts = 0
+
+interface Client {
+    id_client: string;
+    name: string;
+    lastname: string;
+}
+
+
+
+export default function EstimateLink({ estimateId }: EstimateLinkProps) {
+    const clientId = getClientIdByEstimateId(estimateId);
+    const client: Client = getClient(clientId.id_client);
+    const products: Product[] = getProductsDetailsByEstimateId(estimateId);
+
+    let totalAmount = 0;
+    let totalProducts = 0;
 
     for (let product of products) {
         totalAmount += product.price * product.quantity;
-        totalProducts += product.quantity
+        totalProducts += product.quantity;
     }
-    
 
     return (
-        <>
-        <div>
-            <p>Client: {client.name} {client.lastname} Estimate: {estimateId} Product Count: {totalProducts} Total Amount: {totalAmount}</p>
-        </div>
-        </>
-    )
+        <tr className={classes.tableRow}>
+            <td className={classes.tableCell}>
+                <Link href={`/estimate/${estimateId}`} className={classes.link}>{client.name} {client.lastname}</Link>
+            </td>
+            <td className={classes.tableCell}>
+                <Link href={`/estimate/${estimateId}`} className={classes.link}>{estimateId}</Link>
+            </td>
+            <td className={classes.tableCell}>
+                <Link href={`/estimate/${estimateId}`} className={classes.link}>{totalProducts}</Link>
+            </td>
+            <td className={classes.tableCell}>
+                <Link href={`/estimate/${estimateId}`} className={classes.link}>{totalAmount}</Link>
+            </td>
+        </tr>
+    );
 }

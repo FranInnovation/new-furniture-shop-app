@@ -5,7 +5,7 @@ export interface NavigationLayoutProps {
 }
 
 export interface ClientListItemProps {
-    id: string;
+    id: number;
     name: string;
     lastname: string;
     document: string;
@@ -28,4 +28,21 @@ export interface Client {
 
 export interface ClientUpdaterProps {
     client: Client;
+}
+
+export interface Estimate {
+    id: string;
+}
+
+export interface EstimateListProps {
+    estimates: Estimate[];
+}
+
+export interface EstimateLinkProps {
+    estimateId: string;
+}
+
+export interface Product {
+    price: number;
+    quantity: number;
 }

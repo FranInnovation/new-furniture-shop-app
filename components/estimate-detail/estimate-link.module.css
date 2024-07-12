@@ -1,0 +1,48 @@
+.tableRow {
+    cursor: pointer;
+}
+
+.tableCell {
+    padding: 0;
+    border: none;
+}
+
+.link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.rowContent {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.rowContent:hover {
+    background-color: #ddd;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.table tr:nth-child(even) .rowContent {
+    background-color: #f2f2f2;
+}

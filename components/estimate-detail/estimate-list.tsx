@@ -1,22 +1,36 @@
 
 import Link from "next/link";
 import EstimateLink from "./estimate-link";
+import { EstimateListProps } from "@/types/types";
+import classes from '../clients-list/clients-list.module.css'
 
-interface Estimate {
-    id: string;
-}
-
-interface EstimateListProps {
-    estimates: Estimate[];
-}
 
 export default function EstimateList({estimates}: EstimateListProps) {
 
-    estimates.forEach(element => {
-    });
     return (
-    <ul>
-        {estimates.map(estimate => <Link href={`/estimate/${estimate.id}`} key={estimate.id}><EstimateLink estimateId={estimate.id}/></Link>)}
-    </ul>
-    )
+        <>
+            <header className={classes.header}>
+                <h2>Estimates List</h2>
+            </header>
+            <div className={classes.tableContainer}>
+                <table className={classes.table}>
+                    <thead>
+                        <tr>
+                            <th>Client</th>
+                            <th>ID</th>
+                            <th>Items</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        estimates.map(estimate => (
+                            <EstimateLink key={estimate.id} estimateId={estimate.id} />
+                        ))
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </>
+    );
 }
