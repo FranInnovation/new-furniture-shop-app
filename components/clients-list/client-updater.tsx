@@ -30,10 +30,10 @@ export default function ClientUpdater({client}: ClientUpdaterProps) {
         <>
         {!updateClient && 
             <>
-            <header className={classes.header}>
+            <header className='header'>
                 <button onClick={() => setUpdateClient(true)}>Update Client</button>
             </header>
-            <main className={classes.main}>
+            <main className='main'>
                 <ClientInfo client={client} />
             </main>
 
@@ -41,7 +41,7 @@ export default function ClientUpdater({client}: ClientUpdaterProps) {
             </>}
 
         {updateClient &&
-        <main className={classes.main}>
+        <main className='main'>
             <form action={updateClientInfo} className={classes.form}>
                 <div>
                     <input type="number" id="id" name="id" value={formData.id} hidden />

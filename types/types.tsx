@@ -43,6 +43,25 @@ export interface EstimateLinkProps {
 }
 
 export interface Product {
+    id: string;
+    description: string;
     price: number;
     quantity: number;
+}
+
+export interface EstimateBuilderProps {
+    products: Product[];
+    clients: Client[];
+}
+
+export interface ClientDetailPageProps {
+    params: {
+        clientDetail: string;
+    };
+}
+
+export interface ProductDetailPageProps {
+    params: {
+        productDetail: string;
+    };
 }

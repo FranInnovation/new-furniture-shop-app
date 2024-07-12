@@ -20,10 +20,10 @@ export default function WellcomePage() {
 
     return (
         <>
-            <header className={classes.header}>
+            <header className='header'>
                 <h1>Welcome Page</h1>
             </header>
-            <main className={classes.main}>
+            <main className='main'>
                 <p className={classes.phrase}>{phrase}</p>
             </main>
         </>

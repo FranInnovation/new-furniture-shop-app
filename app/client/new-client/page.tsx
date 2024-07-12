@@ -5,10 +5,10 @@ import classes from './page.module.css';
 export default function AddNewClient() {
     return (
         <>
-            <header className={classes.header}>
+            <header className='header'>
                 <h1>New Client Page</h1>
             </header>
-            <main className={classes.main}>
+            <main className='main'>
                 <form action={newClient} className={classes.form}>
                     <div>
                         <p>

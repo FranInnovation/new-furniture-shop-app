@@ -5,10 +5,10 @@ import classes from './page.module.css';
 export default function AddNewProduct() {
     return (
         <>
-            <header className={classes.header}>
+            <header className='header'>
                 <h1>New Product</h1>
             </header>
-            <main className={classes.main}>
+            <main className='main'>
                 <form action={newProduct} className={classes.form}>
                     <div>
                         <p>

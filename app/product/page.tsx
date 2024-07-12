@@ -2,7 +2,6 @@
 import ProductList from "@/components/product-list/product-list";
 import { getProducts } from '@/lib/products'
 import Link from "next/link";
-import classes from './page.module.css'
 
 export default function ProductPage() {
 
@@ -10,11 +9,11 @@ export default function ProductPage() {
 
     return (
         <>
-            <header className={classes.header}>
+            <header className='header'>
                 <h1>Product Page</h1>
                 <button><Link href='/product/new-product'>New Product</Link></button>
             </header>
-            <main className={classes.main}>
+            <main className='main'>
                 <ProductList products={products} />
             </main>
         </>

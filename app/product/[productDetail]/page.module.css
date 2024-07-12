@@ -1,0 +1,35 @@
+.info_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.product_info {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.product_info p {
+    margin: 10px 0;
+    color: #333;
+}
+
+.product_info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.product_info a:hover {
+    text-decoration: underline;
+}

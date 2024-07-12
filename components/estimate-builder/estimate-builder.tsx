@@ -4,27 +4,24 @@
 import { useEffect, useState } from "react";
 import ProductSelector from "../product-list/product-selector";
 import ClientSelector from "../clients-list/client-selector";
+import { Product, Client, EstimateBuilderProps } from "@/types/types";
 
-import { newEstimate } from '@/lib/actions'
+import { newEstimate } from '@/lib/actions';
 
-export default function EstimateBuilder({ products, clients }) {
-
-    const [selectedProducts, setSelectedProducts] = useState([]);
-    const [estimatePrice, setEstimatePrice] = useState(0);
-
+export default function EstimateBuilder({ products, clients }: EstimateBuilderProps) {
+    const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
+    const [estimatePrice, setEstimatePrice] = useState<number>(0);
     const [selectedClient, setSelectedClient] = useState<string>("");
-    
+
     const handleClientChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedClient(event.target.value);
     };
-
-
 
     useEffect(() => {
         setEstimatePrice(selectedProducts.reduce((acc, product) => acc + (product.price * product.quantity), 0));
     }, [selectedProducts]);
 
-    const handleProductSelect = (product) => {
+    const handleProductSelect = (product: Product) => {
         setSelectedProducts(prevSelectedProducts => {
             const existingProductIndex = prevSelectedProducts.findIndex(p => p.id === product.id);
             if (existingProductIndex !== -1) {
@@ -39,7 +36,7 @@ export default function EstimateBuilder({ products, clients }) {
         });
     };
 
-    const handleProductDeselect = (product) => {
+    const handleProductDeselect = (product: Product) => {
         setSelectedProducts(prevSelectedProducts => {
             const existingProductIndex = prevSelectedProducts.findIndex(p => p.id === product.id);
             if (existingProductIndex !== -1) {
@@ -55,21 +52,20 @@ export default function EstimateBuilder({ products, clients }) {
         });
     };
 
-    const handleSubmit = (selectedClient, selectedProducts) => {
-
-        newEstimate(selectedClient, selectedProducts)
-    }
+    const handleSubmit = (selectedClient: string, selectedProducts: Product[]) => {
+        newEstimate(selectedClient, selectedProducts);
+    };
 
     return (
         <>
-            <ClientSelector clients={clients} selectedClient={selectedClient} onClientChange={handleClientChange}/>
+            <ClientSelector clients={clients} selectedClient={selectedClient} onClientChange={handleClientChange} />
             <ProductSelector products={products} onProductSelect={handleProductSelect} />
             <div>
                 <h2>Estimate Products</h2>
                 <ul>
                     {selectedProducts.map(product => (
                         <li key={product.id} onClick={() => handleProductDeselect(product)}>
-                            {product.description} - {product.price} x {product.quantity} 
+                            {product.description} - {product.price} x {product.quantity}
                         </li>
                     ))}
                 </ul>
@@ -77,9 +73,9 @@ export default function EstimateBuilder({ products, clients }) {
                     <p>Total: {estimatePrice}</p>
                 </div>
             </div>
-
             <button type="button" onClick={() => handleSubmit(selectedClient, selectedProducts)}>Submit Estimate</button>
         </>
     );
 }
+
 

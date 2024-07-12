@@ -1,11 +1,10 @@
 
 import { getClient } from "@/lib/clients"
 import { notFound } from "next/navigation"
-import ClientInfo from "@/components/clients-list/client-info"
 import ClientUpdater from "@/components/clients-list/client-updater"
-import classes from './page.module.css'
+import { ClientDetailPageProps } from "@/types/types";
 
-export default function ClientDetailPage({params}) {
+export default function ClientDetailPage({params}: ClientDetailPageProps) {
 
     const client = getClient(params.clientDetail)
 
@@ -15,10 +14,10 @@ export default function ClientDetailPage({params}) {
 
     return (
         <>
-            <header className={classes.header}>
+            <header className='header'>
                 <h1>Client Detail Page</h1>
             </header>
-            <main className={classes.main}>
+            <main className='main'>
                 <ClientUpdater client={client} />
             </main>
             

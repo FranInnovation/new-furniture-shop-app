@@ -14,15 +14,13 @@ export default function AddNewEstimate() {
 
     return (
         <>
-        <header>
+        <header className="header">
             <h1>New Estimate</h1>
         </header>
-        <main>
+        <main className="main">
             <form action={newEstimate}>
                 <div>
-
                     <EstimateBuilder products={products} clients={clients} />
-
                 </div>
             </form>   
         </main>
