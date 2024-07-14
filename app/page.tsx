@@ -1,13 +1,13 @@
 
-// 'use client'
+'use client'
 
 import { ChangeEvent, FormEvent, useState, FocusEvent } from "react";
-
-// import WellcomePage from "./wellcome/page";
 import { useContext } from "react";
 
 import classes from "./page.module.css";
-import Link from "next/link";
+import { login } from '@/lib/actions';
+import Image from "next/image";
+import logoImg from '@/assets/logo_muebles.png'
 
 export default function Home() {
 
@@ -79,43 +79,84 @@ export default function Home() {
   //   }
   // }
 
+  // return (
+  //   <>
+  //     <main className={classes.main}>
+  //       <div className={classes.login_animation_container}>
+  //         <div className="backgroud-animation">
+  //           <p>Animation</p>
+  //         </div>
+  //       </div>
+
+  //       <div className={classes.login_form_container}>
+  //         <div className="login-form">
+  //           <h1>Login</h1>
+  //           <form action={login}>
+  //             <div className="form-group">
+  //                 <label htmlFor="email">User:</label>
+  //                 <input type="email" id="email" name="email" required
+  //                 // onChange={handleChange}
+  //                 // onBlur={handleBlur}
+  //                 />
+  //                 {/* {errors.email && <p className="error">{errors.email}</p>} */}
+  //             </div>
+  //             <div className="form-group">
+  //                 <label htmlFor="password">Password:</label>
+  //                 <input type="password" id="password" name="password" required
+  //                 // onChange={handleChange}
+  //                 // onBlur={handleBlur}
+  //                 />
+  //                 {/* {errors.password && <p className="error">{errors.password}</p>} */}
+  //             </div>
+  //             <div className="form-group">
+  //                 <button type="submit">ENTRAR</button>
+  //             </div>
+  //           </form>
+  //         </div>
+  //       </div>
+  //     </main>
+  //   </>
+  // );
+
   return (
     <>
       <main className={classes.main}>
         <div className={classes.login_animation_container}>
-          <div className="backgroud-animation">
-            <p>Animation</p>
+          <div className="background-animation">
+            <Image src={logoImg} className={classes.shop_logo} alt="furniture-logo" priority/>
           </div>
         </div>
-
+  
         <div className={classes.login_form_container}>
           <div className="login-form">
             <h1>Login</h1>
-            <form /*onSubmit={handleSubmit}*/>
+            <form action={login}>
               <div className="form-group">
-                  <label htmlFor="email">User:</label>
-                  <input type="email" id="email" name="email" required
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
-                  />
-                  {/* {errors.email && <p className="error">{errors.email}</p>} */}
+                <label htmlFor="email">User:</label>
+                <input type="email" id="email" name="email" required
+                // onChange={handleChange}
+                // onBlur={handleBlur}
+                />
+                {/* {errors.email && <p className="error">{errors.email}</p>} */}
               </div>
               <div className="form-group">
-                  <label htmlFor="password">Password:</label>
-                  <input type="password" id="password" name="password" required
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
-                  />
-                  {/* {errors.password && <p className="error">{errors.password}</p>} */}
+                <label htmlFor="password">Password:</label>
+                <input type="password" id="password" name="password" required
+                // onChange={handleChange}
+                // onBlur={handleBlur}
+                />
+                {/* {errors.password && <p className="error">{errors.password}</p>} */}
               </div>
               <div className="form-group">
-                  <button type="submit">ENTRAR</button>
+                <button type="submit">ENTRAR</button>
               </div>
             </form>
-            <p><Link href='/wellcome'>Wellcome Page</Link></p>
           </div>
         </div>
       </main>
     </>
   );
+  
+  
+  
 }

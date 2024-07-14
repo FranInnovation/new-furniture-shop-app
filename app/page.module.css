@@ -6,7 +6,10 @@
 .login_animation_container {
   flex: 2;
   position: relative;
-  background-color: antiquewhite;
+  background: linear-gradient(to bottom, #333A73, #FBA834);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login_form_container {
@@ -14,5 +17,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f4f4f4;
+  background-color: white;
 }
+
+.shop_logo {
+  max-width: 100%; 
+  height: auto; 
+  border-radius: 100%;
+}
+
+
+
+
+
