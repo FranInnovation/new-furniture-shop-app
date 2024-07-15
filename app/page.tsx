@@ -2,7 +2,6 @@
 'use client'
 
 import { ChangeEvent, FormEvent, useState, FocusEvent } from "react";
-import { useContext } from "react";
 
 import classes from "./page.module.css";
 import { login } from '@/lib/actions';
@@ -11,112 +10,37 @@ import logoImg from '@/assets/logo_muebles.png'
 
 export default function Home() {
 
-  // const [user, setUser] = useState(null)
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: ''
+  })
 
-  // const userCtx = useContext(UserContext);
+  const [errors, setErrors] = useState({
+    email: '',
+    password: ''
+  });
 
-  // const [token, setToken] = useState(localStorage.getItem('token') || '')
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
-  // const [credentials, setCredentials] = useState({
-  //   email: '',
-  //   password: ''
-  // })
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setCredentials({
+      ... credentials,
+      [event.target.name]: event.target.value
+    })
+  }
 
-  // const [errors, setErrors] = useState({
-  //   email: '',
-  //   password: ''
-  // });
+  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
 
-  // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-
-  // const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-  //   setCredentials({
-  //     ... credentials,
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
-
-  // const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-  //   const { name, value } = event.target;
-
-  //   if (name === "email" && !emailRegex.test(value)) {
-  //     setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is not valid' }));
-  //   } else if (name === "password" && !passwordRegex.test(value)) {
-  //     setErrors((prevErrors) => ({ ...prevErrors, password: 'Password must be at least 6 characters long and contain both letters and numbers' }));
-  //   } else {
-  //     setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
-  //   }
-  // };
-
-  // const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-
-  //   const res = await fetch('/api/users', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(credentials)
-  //   });
-  //   const data = await res.json();
-
-  //   if(res.ok) {
-  //     // const newUser: User = {
-  //     //   email: data.user.email,
-  //     //   name: data.user.name,
-  //     //   lastname: data.user.lastname
-  //     // }
-  //     // console.log('newUser: ', newUser.name)
-  //     // userCtx.setUser(newUser)
-  //     // console.log('userCTX: ', userCtx.user.name)
-
-  //     setToken(data.token);
-  //     localStorage.setItem('token', data.token)
-  //     console.log('Localstorage: ', localStorage.getItem('token'))
-  //   } else {
-  //     console.error('login Error: ', data.message)
-  //   }
-  // }
-
-  // return (
-  //   <>
-  //     <main className={classes.main}>
-  //       <div className={classes.login_animation_container}>
-  //         <div className="backgroud-animation">
-  //           <p>Animation</p>
-  //         </div>
-  //       </div>
-
-  //       <div className={classes.login_form_container}>
-  //         <div className="login-form">
-  //           <h1>Login</h1>
-  //           <form action={login}>
-  //             <div className="form-group">
-  //                 <label htmlFor="email">User:</label>
-  //                 <input type="email" id="email" name="email" required
-  //                 // onChange={handleChange}
-  //                 // onBlur={handleBlur}
-  //                 />
-  //                 {/* {errors.email && <p className="error">{errors.email}</p>} */}
-  //             </div>
-  //             <div className="form-group">
-  //                 <label htmlFor="password">Password:</label>
-  //                 <input type="password" id="password" name="password" required
-  //                 // onChange={handleChange}
-  //                 // onBlur={handleBlur}
-  //                 />
-  //                 {/* {errors.password && <p className="error">{errors.password}</p>} */}
-  //             </div>
-  //             <div className="form-group">
-  //                 <button type="submit">ENTRAR</button>
-  //             </div>
-  //           </form>
-  //         </div>
-  //       </div>
-  //     </main>
-  //   </>
-  // );
+    if (name === "email" && !emailRegex.test(value)) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is not valid' }));
+    } else if (name === "password" && !passwordRegex.test(value)) {
+      setErrors((prevErrors) => ({ ...prevErrors, password: 'Password must be at least 6 characters long and contain both letters and numbers' }));
+    } else {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
+    }
+  };
 
   return (
     <>
@@ -124,6 +48,7 @@ export default function Home() {
         <div className={classes.login_animation_container}>
           <div className="background-animation">
             <Image src={logoImg} className={classes.shop_logo} alt="furniture-logo" priority/>
+            <h1 className={classes.shop_name}>Furniture Shop</h1>
           </div>
         </div>
   
@@ -131,24 +56,22 @@ export default function Home() {
           <div className="login-form">
             <h1>Login</h1>
             <form action={login}>
-              <div className="form-group">
-                <label htmlFor="email">User:</label>
+              <div className={classes.form_group}>
+                <label htmlFor="email">User</label>
                 <input type="email" id="email" name="email" required
-                // onChange={handleChange}
-                // onBlur={handleBlur}
+                onBlur={handleBlur}
                 />
-                {/* {errors.email && <p className="error">{errors.email}</p>} */}
+                {errors.email && <p className="error">{errors.email}</p>}
               </div>
-              <div className="form-group">
-                <label htmlFor="password">Password:</label>
+              <div className={classes.form_group}>
+                <label htmlFor="password">Password</label>
                 <input type="password" id="password" name="password" required
-                // onChange={handleChange}
-                // onBlur={handleBlur}
+                onBlur={handleBlur}
                 />
-                {/* {errors.password && <p className="error">{errors.password}</p>} */}
+                {errors.password && <p className="error">{errors.password}</p>}
               </div>
-              <div className="form-group">
-                <button type="submit">ENTRAR</button>
+              <div className={classes.form_group}>
+                <button type="submit" className={classes.button}>ENTER</button>
               </div>
             </form>
           </div>
